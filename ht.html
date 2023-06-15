@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <script src="angular.min.js"></script>
+</head>
+
+<body ng-controller="myCtrl">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="person_in_people">
+                <td>{person.name}</td>
+                <td>{person.age}</td>
+            </tr>
+        </tbody>
+    </table>    
+
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope){
+            $scope.people = [
+                {name: 'Aryan', age: 12}
+            ];
+        });
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+    <form ng-submit="submitForm()">
+        <input type="text" id="name" ng-model="formData.name" required>
+        <input type="email" id="email" ng-model="formData.email" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div ng-show="formSubmitted">
+        <h3>Form Data:</h3>
+        <p>{{formData.name}}</p>
+        <p>{{formData.email}}</p>
+    </div>
+
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope){
+            $scope.formSubmitted=false;
+            $scope.formData={};
+        });
+    </script>
+</body>
+</html>
